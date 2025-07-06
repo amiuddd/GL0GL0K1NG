@@ -32,10 +32,11 @@
     }
     .center-message {
       font-family: 'Courier New', monospace;
-      color: #8a6bae; /* Morado mate */
+      color: #c042ff; /* Morado brillante intenso */
       font-size: 6rem;
       text-align: center;
-      opacity: 0.8;
+      opacity: 0.9;
+      text-shadow: 0 0 10px rgba(192, 66, 255, 0.7);
     }
     @media (max-width: 768px) {
       .center-message {
@@ -49,6 +50,7 @@
       z-index: 9999;
       pointer-events: none;
       transition: transform 0.1s ease;
+      filter: drop-shadow(0 0 5px rgba(192, 66, 255, 0.8));
     }
     #audio-control {
       position: absolute;
@@ -60,9 +62,9 @@
 <body>
 <canvas id="canvas"></canvas>
 <div class="overlay">
-  <div class="center-message">GLOGLOKING💜</div> <!-- Corazón morado -->
+  <div class="center-message">GLOGLOKING💜</div> <!-- Corazón morado brillante -->
 </div>
-<img id="cursor" class="heart-cursor" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjOGE2YmFlIiBkPSJNNDcuNiAyNUMyNS4xIDI1IDcgNDMuMSA3IDY1LjZDNyA4OC4xIDI0LjMgMTI3IDkzLjUgMTU3LjVjNjkuMiAzMC41IDE0Ni4zIDY0LjEgMTYxLjUgODQuMSAxNS4yLTIwIDEwMC4xLTUzLjYgMTY5LjMtODQuMSA2OS4yLTMwLjUgODYuNS02OS40IDg2LjUtOTEuOSAwLTIyLjUtMTguMS00MC42LTQwLjYtNDAuNnMtNDAuNiAxOC4xLTQwLjYgNDAuNmMwIDguMSAxLjYgMTUuNSA0LjMgMjIuMi0zLjEgMi4yLTYuNyAzLjUtMTAuNyAzLjUtMTMuOCAwLTI1LTExLjItMjUtMjVzMTEuMi0yNSAyNS0yNWM4LjEgMCAxNS41IDMuOSAyMC4yIDEwLjIgMTEuNy0xNS4yIDE4LjgtMzQuMiAxOC44LTU1LjIgMC00NS45LTM3LjItODMuMS04My4xLTgzLjFzLTgzLjEgMzcuMi04My4xIDgzLjFjMCAxNi4zIDQuNyAzMS41IDEyLjggNDQuMy0xLjIgMS4xLTIuNiAyLjEtNC4xIDIuOS0xNC4zIDcuOC0yNiggMTQuOS0zNi4yIDIwLjJDMTA5LjMgMTIxLjUgNDcuNiA4OC4xIDQ3LjYgNjUuNnMxOC4xLTQwLjYgNDAuNi00MC42QzEwOS4zIDI1IDc3IDQzLjEgNzcgNjUuNnMzMi4zIDQwLjYgMzIuMyA0MC42UzE3MC4xIDI1IDQ3LjYgMjV6Ii8+PC9zdmc+" alt="heart">
+<img id="cursor" class="heart-cursor" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzA0MmZmIiBkPSJNNDcuNiAyNUMyNS4xIDI1IDcgNDMuMSA3IDY1LjZDNyA4OC4xIDI0LjMgMTI3IDkzLjUgMTU3LjVjNjkuMiAzMC41IDE0Ni4zIDY0LjEgMTYxLjUgODQuMSAxNS4yLTIwIDEwMC4xLTUzLjYgMTY5LjMtODQuMSA2OS4yLTMwLjUgODYuNS02OS40IDg2LjUtOTEuOSAwLTIyLjUtMTguMS00MC42LTQwLjYtNDAuNnMtNDAuNiAxOC4xLTQwLjYgNDAuNmMwIDguMSAxLjYgMTUuNSA0LjMgMjIuMi0zLjEgMi4yLTYuNyAzLjUtMTAuNyAzLjUtMTMuOCAwLTI1LTExLjItMjUtMjVzMTEuMi0yNSAyNS0yNWM4LjEgMCAxNS41IDMuOSAyMC4yIDEwLjIgMTEuNy0xNS4yIDE4LjgtMzQuMiAxOC44LTU1LjIgMC00NS45LTM3LjItODMuMS04My4xLTgzLjFzLTgzLjEgMzcuMi04My4xIDgzLjFjMCAxNi4zIDQuNyAzMS41IDEyLjggNDQuMy0xLjIgMS4xLTIuNiAyLjEtNC4xIDIuOS0xNC4zIDcuOC0yNiggMTQuOS0zNi4yIDIwLjJDMTA5LjMgMTIxLjUgNDcuNiA4OC4xIDQ3LjYgNjUuNnMxOC4xLTQwLjYgNDAuNi00MC42QzEwOS4zIDI1IDc3IDQzLjEgNzcgNjUuNnMzMi4zIDQwLjYgMzIuMyA0MC42UzE3MC4xIDI1IDQ3LjYgMjV6Ii8+PC9zdmc+" alt="heart">
 
 <audio id="audio-control" loop>
   <source src="musica.mp3" type="audio/mpeg">
@@ -125,14 +127,14 @@
     ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = "#8a6bae"; /* Morado mate */
+    ctx.fillStyle = "#c042ff"; /* Morado brillante intenso */
     for (let i = 0; i < drops.length; i++) {
       const x = i * baseFontSize * 2;
       const y = drops[i] * baseFontSize;
       
       ctx.fillText(text, x, y);
       
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+      ctx.strokeStyle = "rgba(192, 66, 255, 0.3)";
       ctx.lineWidth = 1;
       ctx.strokeText(text, x, y);
       ctx.fillText(text, x, y);
@@ -164,7 +166,7 @@
         vy: dir.y * (3 + Math.random() * 2),
         alpha: 1,
         size: baseFontSize + Math.random() * 30,
-        color: "#8a6bae" /* Morado mate */
+        color: "#c042ff" /* Morado brillante intenso */
       });
     });
 
@@ -176,7 +178,7 @@
         vy: (Math.random() - 0.5) * 6,
         alpha: 1,
         size: baseFontSize + Math.random() * 20,
-        color: "#8a6bae" /* Morado mate */
+        color: "#c042ff" /* Morado brillante intenso */
       });
     }
   };
